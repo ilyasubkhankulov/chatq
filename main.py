@@ -1,9 +1,8 @@
 import time
-
-import pendulum
 import streamlit as st
-from streamlit.components.v1 import html
 from streamlit_chat import message
+from streamlit.components.v1 import html
+import pendulum
 
 st.set_page_config(layout="wide")
 
