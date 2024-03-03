@@ -1,6 +1,7 @@
 import time
+
 from openai import OpenAI
-token = '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'
+
 client = OpenAI(api_key=token)
 
 prompt = "3D geometrical objects, such as cylinder, box, etc. Make sure to include the formula for the volume underneath each one."

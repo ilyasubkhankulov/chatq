@@ -1,4 +1,5 @@
 from openai import OpenAI
+
 client = OpenAI()
 
 def create_image(content):
@@ -46,13 +47,13 @@ if completion.choices[0].message.content:
    create_image(completion.choices[0].message.content)
 
 
-messages.append({"role": "user", "content": "Person1: Let's plan our next vacation. Person2: Fine. Would you be OK to give me some ideas?"})
+messages.append({"role": "user", "content": "Person1: Hi Person2: Hey"})
 
 completion = client.chat.completions.create(
   model ="gpt-4",
   messages = messages
 )
-
+  
 print(completion.choices[0].message)
 # expect to see some facilitiation message
 
