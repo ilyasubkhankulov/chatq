@@ -30,18 +30,21 @@ messages = [
     {"role": "user", "content": "Person1: Hello! Person2: Hi."}
   ] 
 
+#
+# Test run follows here
+#
 
 completion = client.chat.completions.create(
   model="gpt-4",
   messages =  messages
 )
 
+# empty message should be returned here
 print(completion.choices[0].message)
 
 if completion.choices[0].message.content:
    create_image(completion.choices[0].message.content)
 
-# empty message returned here
 
 messages.append({"role": "user", "content": "Person1: Let's plan our next vacation. Person2: Fine. Would you be OK to give me some ideas?"})
 
