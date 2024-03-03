@@ -7,33 +7,17 @@ import redis
 
 st.set_page_config(layout="wide")
 
-redis_client = redis.Redis(host='localhost', port=6379, db=0, encoding='utf8', decode_responses=True)
+redis_client = redis.Redis(host='localhost', port=6379, db=0, encoding='utf8', decode_responses=True,)
 
 # Initialize session state variables if they don't exist
 if 'messages' not in st.session_state:
     st.session_state['messages'] = []
-    redis_client.set('chatq:counter', 0)
     redis_client.set('chatq:image_url', 'https://www.freeiconspng.com/uploads/star-png-1024x1024-png-with-alpha-star-18.png')
 
-# https://via.placeholder.com/1024
-
-def first_call():
-    print('First call')
-
-
-def other_call():
-    print('Other call')
-
-
 # Layout setup
-st.title("ChatQ - ")
+st.title("ChatQ")
 
 def on_user_message():
-    count = redis_client.incr('chatq:counter')
-    if count == 1:
-        first_call()
-    else:
-        other_call()
     user_input = st.session_state.user_input # user message
     username = st.session_state.username # username
     st.session_state.messages.append({'username': username, 'user_input': user_input, 'time': pendulum.now()})
@@ -46,8 +30,6 @@ def on_user_message():
 
 def on_btn_click():
     del st.session_state.messages[:]
-
-
 
 col1, col2 = st.columns([1, 1]) 
 

@@ -3,7 +3,7 @@ import redis
 from openai import AsyncOpenAI
 redis_client = redis.Redis(host='localhost', port=6379, db=0, encoding='utf8', decode_responses=True)
 
-openai_client = AsyncOpenAI(api_key='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')
+openai_client = AsyncOpenAI(api_key='')
 
 async def create_image(message):
     messages = [
@@ -72,7 +72,7 @@ async def get_chat():
         if len_new_chat_history > len_history:
             if len_new_chat_history == 2:
                 await send_first(new_chat_history[-2:])
-            elif len_new_chat_history > 1 and len_new_chat_history % 2 == 0:
+            elif len_new_chat_history > 1:
                 await send_others(new_chat_history[-2:])
             chat_history = new_chat_history
 
